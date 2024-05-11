@@ -20,6 +20,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private TextView oWinsText;
     private TextView xWinsText;
     private TextView playerText;
+    private TextView gameMode;
     private boolean isXTurn;
     public static int turnNum = 0;
     public static int winSum = 0;
@@ -30,6 +31,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+        gameMode = findViewById(R.id.gameModeText);
+        gameMode.setText(R.string.twoPlayer);
 
         playerText = findViewById(R.id.currentPlayer);
         oWinsText = findViewById(R.id.totalOwin);

@@ -137,36 +137,37 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <TextView
-        android:id="@+id/playerText"
+        android:id="@+id/gameModeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Player Turn: "
         android:fontFamily="serif-monospace"
+        android:text="Hello, how are you?"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.271" />
 
     <TextView
         android:id="@+id/currentPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/currPlayer"
+        android:layout_marginBottom="12dp"
         android:fontFamily="serif-monospace"
+        android:text="@string/currPlayer"
         android:textColor="@color/black"
         android:textSize="28dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerText"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintVertical_bias="0.942" />
 
     <TextView
         android:id="@+id/winXText"
@@ -178,7 +179,7 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
         app:layout_constraintVertical_bias="0.325" />
@@ -193,10 +194,10 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.391"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <TextView
         android:id="@+id/totalXWin"
