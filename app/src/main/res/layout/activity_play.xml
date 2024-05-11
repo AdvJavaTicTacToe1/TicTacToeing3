@@ -13,46 +13,50 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.353" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn2"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/btn0"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.353" />
 
     <Button
         android:id="@+id/btn2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.353" />
 
     <Button
         android:id="@+id/btn3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btn6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.117"
@@ -65,7 +69,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btn7"
         app:layout_constraintEnd_toStartOf="@+id/btn5"
         app:layout_constraintStart_toEndOf="@+id/btn3"
@@ -76,7 +81,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btn8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
@@ -89,38 +95,41 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/btn7"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn8"
         app:layout_constraintStart_toEndOf="@+id/btn6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/btn8"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="@string/blankFill"
-        app:cornerRadius="0dp"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/toHome"
@@ -141,51 +150,66 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif-monospace"
-        android:text="Hello, how are you?"
+        android:text="@string/hello"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <TextView
         android:id="@+id/currentPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:fontFamily="serif-monospace"
         android:text="@string/currPlayer"
         android:textColor="@color/black"
         android:textSize="28dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerText"
-        app:layout_constraintVertical_bias="0.942" />
+        app:layout_constraintTop_toBottomOf="@+id/gameModeText"
+        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
-        android:id="@+id/winXText"
+        android:visibility="gone"
+        android:id="@+id/botPlayer"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:text="Bot O's"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentPlayer"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/defaultWinText"
+        android:layout_width="217dp"
         android:layout_height="wrap_content"
         android:fontFamily="serif-monospace"
         android:text="X Wins: "
         android:textColor="@color/black"
         android:textSize="45dp"
-        app:layout_constraintBottom_toTopOf="@+id/toHome"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintHorizontal_bias="0.394"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.116" />
 
     <TextView
-        android:id="@+id/winOText"
+        android:id="@+id/oWinText"
         android:layout_width="217dp"
         android:layout_height="49dp"
         android:fontFamily="serif-monospace"
@@ -194,40 +218,56 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.907" />
 
     <TextView
-        android:id="@+id/totalXWin"
+        android:id="@+id/totalDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif-monospace"
-        android:text="@string/totalWinsX"
+        android:text="@string/zeroString"
         android:textColor="@color/black"
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toEndOf="@+id/winXText"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toEndOf="@+id/defaultWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/totalOwin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif-monospace"
-        android:text="@string/totalWinsO"
+        android:text="@string/zeroString"
         android:textColor="@color/black"
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
 
-        app:layout_constraintStart_toEndOf="@+id/winOText"
+        app:layout_constraintStart_toEndOf="@+id/oWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
         app:layout_constraintVertical_bias="0.906" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/letterSwitchBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="serif-monospace"
+        android:onClick="openHome"
+        android:text="Change Letter?"
+        app:layout_constraintBottom_toTopOf="@+id/currentPlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameModeText"
+        app:layout_constraintVertical_bias="0.521" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
