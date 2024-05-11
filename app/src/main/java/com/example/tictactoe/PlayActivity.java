@@ -53,8 +53,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonBC = findViewById(R.id.btn7); //BotCenter
         Button buttonBR = findViewById(R.id.btn8); //BotRight
         BUTTONS.addAll(Arrays.asList(buttonTL, buttonTC, buttonTR, buttonML, buttonMC, buttonMR, buttonBL, buttonBC, buttonBR));
-        for (Button button : BUTTONS)
-            button.setOnClickListener(this);
+        for (Button button : BUTTONS) button.setOnClickListener(this);
     }
     @Override
     public void onClick(View v)
@@ -78,7 +77,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         }
         else { //toast message indicating you cannot place there
             CharSequence text = "Spot's Taken";
-            Toast.makeText(PlayActivity.this, text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         }
     }
     private boolean winCheck(int sum1, int sum2, int sum3)
@@ -94,11 +93,11 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
                 text+= "X's Wins!";
                 xWinsText.setText((Integer.parseInt(xWinsText.getText().toString())+1)+"");
             }
-            Toast.makeText(PlayActivity.this, text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
             return true;
         }
         else if(turnNum >= 9) {
-            Toast.makeText(PlayActivity.this, "Tie Game", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Tie Game", Toast.LENGTH_LONG).show();
             resetButtons();
             return true;
         }
@@ -121,7 +120,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         finish();
         startActivity(intent);
     } //starts the home page activity
-    private int checkDiagonalSum(int gid) //grid index
+    private static int checkDiagonalSum(int gid) //grid index
     {
         winSum = 0;
         if(gid%2 ==0) {
@@ -147,7 +146,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             winSum += grid[i];
         return winSum;
     }
-    private int checkRowSum(int gid) //grid index
+    private static int checkRowSum(int gid) //grid index
     {
         winSum = 0;
         startIndex = gid<3? 0: gid<6?3:6;
