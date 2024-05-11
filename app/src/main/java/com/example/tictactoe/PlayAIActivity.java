@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.List;
 public class PlayAIActivity extends AppCompatActivity implements View.OnClickListener
 {
     private final List<Button> BUTTONS = new ArrayList<>();
-    private final int[] grid = new int[9];
+//    private final int[] grid = new int[9];
     private TextView gameMode,botLetter,defaultLabel,oWinLabel, defaultTotal, oWinTotal;
     private Button playerSwitch, diffSwitch;
     private List<TextView> winTexts = new ArrayList<>();
