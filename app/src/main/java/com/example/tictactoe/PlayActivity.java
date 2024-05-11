@@ -36,7 +36,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
         playerText = findViewById(R.id.currentPlayer);
         oWinsText = findViewById(R.id.totalOwin);
-        xWinsText = findViewById(R.id.totalXWin);
+        xWinsText = findViewById(R.id.totalDefault);
         oWinsText.setText(0 + "");
         xWinsText.setText(0 + "");
         grid = new int[9];
