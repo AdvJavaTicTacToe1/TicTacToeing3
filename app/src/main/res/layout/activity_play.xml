@@ -102,7 +102,7 @@
         app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintVertical_bias="0.673" />
 
     <Button
         android:id="@+id/btn7"
@@ -115,7 +115,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn8"
         app:layout_constraintStart_toEndOf="@+id/btn6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintVertical_bias="0.678" />
 
     <Button
         android:id="@+id/btn8"
@@ -129,21 +129,22 @@
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintVertical_bias="0.678" />
 
     <Button
         android:id="@+id/toHome"
         android:layout_width="310dp"
         android:layout_height="65dp"
         android:fontFamily="serif-monospace"
-        android:textSize="45dp"
         android:onClick="openHome"
         android:text="Back Home"
+        android:textSize="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.989" />
 
     <TextView
         android:id="@+id/gameModeText"
@@ -158,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <TextView
         android:id="@+id/currentPlayer"
@@ -171,10 +172,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameModeText"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.169" />
 
     <TextView
         android:visibility="gone"
@@ -188,10 +189,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentPlayer"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/defaultWinText"
@@ -203,10 +204,10 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <TextView
         android:id="@+id/oWinText"
@@ -233,10 +234,10 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toEndOf="@+id/defaultWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.24" />
+        app:layout_constraintVertical_bias="0.226" />
 
     <TextView
         android:id="@+id/totalOwin"
@@ -248,26 +249,44 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.077"
 
         app:layout_constraintStart_toEndOf="@+id/oWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.915" />
 
     <Button
         android:visibility="gone"
         android:id="@+id/letterSwitchBtn"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoSizeTextType="uniform"
         android:fontFamily="serif-monospace"
         android:onClick="openHome"
         android:text="Change Letter?"
+        android:textSize="25dp"
+        app:cornerRadius="2dp"
         app:layout_constraintBottom_toTopOf="@+id/currentPlayer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameModeText"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintVertical_bias="0.111" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/diffSwitchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:onClick="openHome"
+        android:text="Hard Mode?"
+        android:textSize="25dp"
+        app:cornerRadius="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/currentPlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/letterSwitchBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

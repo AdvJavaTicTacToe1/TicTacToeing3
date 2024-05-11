@@ -19,7 +19,7 @@ public class PlayAIActivity extends AppCompatActivity
 //    private final List<Button> BUTTONS = new ArrayList<>();
 //    private final int[] grid = new int[9];
     private TextView gameMode,botLetter,defaultLabel,oWinLabel, defaultTotal, oWinTotal;
-    private Button playerSwitch;
+    private Button playerSwitch, diffSwitch;
     private List<TextView> winTexts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class PlayAIActivity extends AppCompatActivity
         botLetter.setVisibility(View.VISIBLE);
         playerSwitch = findViewById(R.id.letterSwitchBtn);
         playerSwitch.setVisibility(View.VISIBLE);
+        diffSwitch = findViewById(R.id.diffSwitchBtn);
+        diffSwitch.setVisibility(View.VISIBLE);
 
         defaultLabel = findViewById(R.id.defaultWinText);
         defaultLabel.setText(R.string.defaultSingle);
