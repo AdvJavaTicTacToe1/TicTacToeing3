@@ -7,4 +7,10 @@
     <string name="defaultSingle">Wins: </string>
     <string name="singlePlayer">Single Player- Bots</string>
     <string name="twoPlayer">Two Player- Versus</string>
+    <string name="botStart">Bot O\'s</string>
+    <string name="xWinStart">X Wins: </string>
+    <string name="oWinStart">O Wins: </string>
+    <string name="hardButton">Hard Mode?</string>
+    <string name="letterButton">Change Letter?</string>
+    <string name="homeButton">Back Home</string>
 </resources>
