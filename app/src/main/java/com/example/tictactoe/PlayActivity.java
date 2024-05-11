@@ -53,7 +53,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonBC = findViewById(R.id.btn7); //BotCenter
         Button buttonBR = findViewById(R.id.btn8); //BotRight
         BUTTONS.addAll(Arrays.asList(buttonTL, buttonTC, buttonTR, buttonML, buttonMC, buttonMR, buttonBL, buttonBC, buttonBR));
-        for (Button button : BUTTONS) button.setOnClickListener(this);
+        for (Button button : BUTTONS)
+            button.setOnClickListener(this);
     }
     @Override
     public void onClick(View v)
@@ -71,9 +72,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             isXTurn ^= true;
             playerText.setText("Player "+(isXTurn? "X's": "O's"));
             turnNum++;
-            if(turnNum >= 4) {
-                if(winCheck(checkDiagonalSum(index), checkColumnSum(index), checkRowSum(index))) resetButtons();
-            }
+            if(turnNum >= 4 && winCheck(checkDiagonalSum(index), checkColumnSum(index), checkRowSum(index)))
+                resetButtons();
         }
         else { //toast message indicating you cannot place there
             CharSequence text = "Spot's Taken";
@@ -82,7 +82,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     }
     private boolean winCheck(int sum1, int sum2, int sum3)
     {
-        int win = Math.abs(sum1) == 3? sum1:(Math.abs(sum2) == 3 ? sum2:(Math.abs(sum3) == 3? sum3: -1));
+        int win = Math.abs(sum1) == 3? sum1:
+                Math.abs(sum2) == 3 ? sum2:
+                Math.abs(sum3) == 3? sum3: -1;
         if(Math.abs(win) == 3) {
             CharSequence text = "";
             if(win < 0) {
@@ -106,13 +108,14 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private void resetButtons()
     {
         grid = new int[9];
-        if(isXTurn) playerText.setText("Player O's START");
-        else playerText.setText("Player X's START");
+        if(isXTurn)
+            playerText.setText("Player O's START");
+        else
+            playerText.setText("Player X's START");
         isXTurn ^= true;
         turnNum = 0;
-        for (Button btn : BUTTONS) {
+        for (Button btn : BUTTONS)
             btn.setText("~");
-        }
     }
     public void openHome(View v)
     {
@@ -132,9 +135,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(gid == 4) { //check the second case for center
             int temp = 0;
-            for(int i = 2; i < 7; i+=2)
-                temp+=grid[i];
-            if(Math.abs(winSum)!=3) winSum = temp;
+            for(int i = 2; i < 7; i+=2) temp+=grid[i];
+            if(Math.abs(winSum)!=3)
+                winSum = temp;
         }
         return winSum;
     }

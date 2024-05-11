@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlayAIActivity extends AppCompatActivity implements View.OnClickListener
+public class PlayRobotActivity extends AppCompatActivity implements View.OnClickListener
 {
     private final List<Button> BUTTONS = new ArrayList<>();
 //    private final int[] grid = new int[9];
@@ -52,7 +52,8 @@ public class PlayAIActivity extends AppCompatActivity implements View.OnClickLis
         Button buttonBC = findViewById(R.id.btn7); //BotCenter
         Button buttonBR = findViewById(R.id.btn8); //BotRight
         BUTTONS.addAll(Arrays.asList(buttonTL, buttonTC, buttonTR, buttonML, buttonMC, buttonMR, buttonBL, buttonBC, buttonBR));
-        for (Button button : BUTTONS) button.setOnClickListener(this);
+        for (Button button : BUTTONS)
+            button.setOnClickListener(this);
     }
     @Override
     public void onClick(View v)
