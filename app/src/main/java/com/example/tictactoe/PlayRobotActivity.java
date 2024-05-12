@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,15 +16,15 @@ import java.util.List;
 public class PlayRobotActivity extends AppCompatActivity implements View.OnClickListener
 {
     private final List<Button> BUTTONS = new ArrayList<>();
-//    private final int[] grid = new int[9];
     private TextView gameMode,botLetter,defaultLabel,oWinLabel, defaultTotal, oWinTotal;
     private Button playerSwitch, diffSwitch;
     private List<TextView> winTexts = new ArrayList<>();
+    private boolean isHardDiff = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        PlayActivity.resetGrid();
+        PlayActivity.reset();
         gameMode = findViewById(R.id.gameModeText);
         gameMode.setText(R.string.singlePlayer);
         botLetter = findViewById(R.id.botPlayer);
@@ -60,11 +59,26 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v)
     {
-        CharSequence text = "Button Clicked";
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-        PlayActivity.checkColumnSum(0);
-        String test = PlayActivity.grid[0] + "";
-        Log.d("Testing", test);
+        int index = BUTTONS.indexOf(v); // Default to -1 if not found
+//        for (int i = 0; i < BUTTONS.size(); i++) {
+//            if (BUTTONS.get(i).getId() == v.getId()) {
+//                index = i;
+//                break;
+//            }
+//        }
+        if(index != -1 && PlayActivity.grid[index] == 0) {
+            PlayActivity.grid[index] = PlayActivity.isXTurn ? 1: -1;
+            ((Button)v).setText(PlayActivity.isXTurn ? "X": "O");
+            PlayActivity.isXTurn ^= true;
+            defaultLabel.setText("Player "+(PlayActivity.isXTurn? "X's": "O's"));
+            PlayActivity.turnNum++;
+//            if(turnNum >= 4 && winCheck(checkDiagonalSum(index), checkColumnSum(index), checkRowSum(index)))
+//                resetButtons();
+        }
+        else { //toast message indicating you cannot place there
+            CharSequence text = "Spot's Taken";
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        }
     }
     public void openHome(View v)
     {
@@ -74,12 +88,13 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     } //starts the home page activity
     public void letterChangeClick(View v)
     {
-        CharSequence text = "Change Letter Clicked";
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        if(PlayActivity.turnNum == 0)
+            PlayActivity.isXTurn^=true;
+        //then run robot's turn
     }
     public void diffChangeClick(View v)
     {
-        CharSequence text = "Hard Mode Clicked";
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        isHardDiff^=true;
+        //need add some indicator that it is on a hard mode difficulty
     }
 }

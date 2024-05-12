@@ -21,7 +21,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private TextView xWinsText;
     private TextView playerText;
     private TextView gameMode;
-    private boolean isXTurn;
+    public static boolean isXTurn;
     public static int turnNum = 0;
     public static int winSum = 0;
     public static int startIndex = 0;
@@ -39,9 +39,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         xWinsText = findViewById(R.id.totalDefault);
         oWinsText.setText(0 + "");
         xWinsText.setText(0 + "");
-        grid = new int[9];
-        turnNum = 0;
-        isXTurn = true;
+        reset();
 
         Button buttonTL = findViewById(R.id.btn0); //TopLeft
         Button buttonTC = findViewById(R.id.btn1); //TopCenter
@@ -59,16 +57,10 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v)
     {
-        int index = -1; // Default to -1 if not found
-        for (int i = 0; i < BUTTONS.size(); i++) {
-            if (BUTTONS.get(i).getId() == v.getId()) {
-                index = i;
-                break;
-            }
-        }
-        if(grid[index] == 0) { //set the "grid" to -1 (for O's) or 1 (for X's)
+        int index = BUTTONS.indexOf(v);
+        if(index != -1 && grid[index] == 0) { //set the "grid" to -1 (for O's) or 1 (for X's)
             grid[index] = isXTurn? 1: -1;
-            BUTTONS.get(index).setText(isXTurn ? "X": "O");
+            ((Button)v).setText(isXTurn ? "X": "O");
             isXTurn ^= true;
             playerText.setText("Player "+(isXTurn? "X's": "O's"));
             turnNum++;
@@ -157,8 +149,10 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             winSum += grid[i];
         return winSum;
     }
-    public static void resetGrid()
+    public static void reset()
     {
         grid = new int[9];
+        turnNum = 0;
+        isXTurn = true;
     }
 }
