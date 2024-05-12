@@ -28,16 +28,16 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         //title
         gameMode = findViewById(R.id.gameModeText);
         gameMode.setText(R.string.singlePlayer);
-        //buttons
+        //options buttons
         playerSwitch = findViewById(R.id.letterSwitchBtn);
         playerSwitch.setVisibility(View.VISIBLE);
         diffSwitch = findViewById(R.id.diffSwitchBtn);
         diffSwitch.setVisibility(View.VISIBLE);
-        //turn indicators
+        //turn indicators textViews
         botLetter = findViewById(R.id.botPlayer);
         botLetter.setVisibility(View.VISIBLE);
         playerLetter = findViewById(R.id.currentPlayer);
-
+        //score textViews
         defaultLabel = findViewById(R.id.defaultWinText);
         defaultLabel.setText(R.string.defaultSingle);
         botLabel = findViewById(R.id.oWinText);
@@ -86,11 +86,12 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         if(win != -1) {
             CharSequence text = win < 0 ? "O's Win!": "X's Win!";
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-            //need to set the turn indicators to correct turn
             return true;
         }
         else if(PlayActivity.turnNum >= 9) {
             Toast.makeText(this, "Tie Game", Toast.LENGTH_LONG).show();
+            defaultTotal.setText((Integer.parseInt(defaultTotal.getText().toString()) -1) + "");
+            botTotal.setText((Integer.parseInt(botTotal.getText().toString()) -1) + "");
             nextGame();
             return true;
         }
@@ -98,12 +99,10 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     }
     private void nextGame()
     {
-        if(PlayActivity.turnNum%2 !=0 == PlayActivity.isXTurn) {
-            defaultTotal.setText((Integer.parseInt(defaultTotal.getText().toString())+1)+"");
-        }
-        else {
-            botTotal.setText((Integer.parseInt(botTotal.getText().toString())+1)+"");
-        }
+        if (PlayActivity.turnNum %2 != 0 == PlayActivity.isXTurn)
+            defaultTotal.setText((Integer.parseInt(defaultTotal.getText().toString()) + 1) + "");
+        else
+            botTotal.setText((Integer.parseInt(botTotal.getText().toString()) + 1) + "");
         PlayActivity.grid = new int[9];
         PlayActivity.turnNum = 0;
         for (Button btn : BUTTONS)
@@ -121,11 +120,14 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         }
         else {
             //add the easy diff code in here I guess
+            // starter ideas, Math.random to get an index and make sure it's not a spot already taken in grid[]
+
         }
-//        if(PlayActivity.turnNum >= 4 && winCheck(PlayActivity.checkDiagonalSum(botIndex),
-//                PlayActivity.checkColumnSum(botIndex), PlayActivity.checkRowSum(botIndex)))
-//            nextGame();
-        //add the winCheck after botTurn is able to find an index
+//        uncomment these lines after adding both difficulties
+//        adds the winCheck after botTurn
+/*        if(PlayActivity.turnNum >= 4 && winCheck(PlayActivity.checkDiagonalSum(botIndex),
+                PlayActivity.checkColumnSum(botIndex), PlayActivity.checkRowSum(botIndex)))
+            nextGame();*/
     }
     public void openHome(View v)
     {
@@ -138,10 +140,12 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         if(PlayActivity.turnNum == 0) {
             PlayActivity.isXTurn ^= true;
             playerLetter.setText("Player " + (PlayActivity.isXTurn ? "X's START": "O's"));
-            if(!PlayActivity.isXTurn)
-            {
+            if(!PlayActivity.isXTurn) {
                 botLetter.setText("Bot X's START");
-                botTurn();
+                int addIndex = (Math.random()*9 <= 4)? (int)(Math.random() * 8): 4;
+                PlayActivity.grid[addIndex] = 1;
+                BUTTONS.get(addIndex).setText("X");
+                PlayActivity.turnNum++;
             }
             else {
                 botLetter.setText("Bot O's");
@@ -157,7 +161,6 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         isHardDiff^=true;
         if(isHardDiff) Toast.makeText(this, "Hard Mode Enabled", Toast.LENGTH_SHORT).show();
         else Toast.makeText(this, "Hard Mode Disabled", Toast.LENGTH_SHORT).show();
-        //need add some indicator that it is on a hard mode difficulty
-        // eg. colors on screen change, sound, or like idk a toast is prolly fine
+        //optionally add some other indicator that game is in hard mode eg. UI changes color
     }
 }
