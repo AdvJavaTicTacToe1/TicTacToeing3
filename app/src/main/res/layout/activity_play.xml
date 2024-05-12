@@ -178,6 +178,7 @@
         app:layout_constraintVertical_bias="0.166" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/botPlayer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -195,33 +196,33 @@
 
     <TextView
         android:id="@+id/defaultWinText"
-        android:layout_width="217dp"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="serif-monospace"
         android:text="@string/xWinStart"
         android:textColor="@color/black"
-        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <TextView
         android:id="@+id/oWinText"
-        android:layout_width="217dp"
-        android:layout_height="49dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="serif-monospace"
         android:text="@string/oWinStart"
         android:textColor="@color/black"
-        android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.907" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <TextView
         android:id="@+id/totalDefault"
@@ -233,10 +234,10 @@
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toEndOf="@+id/defaultWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
         android:id="@+id/totalOwin"
@@ -248,11 +249,11 @@
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintHorizontal_bias="0.328"
 
         app:layout_constraintStart_toEndOf="@+id/oWinText"
         app:layout_constraintTop_toBottomOf="@+id/btn6"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <Button
         android:visibility="gone"

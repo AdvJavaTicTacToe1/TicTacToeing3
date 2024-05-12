@@ -13,4 +13,5 @@
     <string name="hardButton">Hard Mode?</string>
     <string name="letterButton">Change Letter?</string>
     <string name="homeButton">Back Home</string>
+    <string name="botWinLabel">Bot Wins: </string>
 </resources>
