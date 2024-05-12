@@ -21,7 +21,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private TextView xWinsText;
     private TextView playerText;
     private TextView gameMode;
-    private boolean isXTurn;
+    public static boolean isXTurn;
     public static int turnNum = 0;
     public static int winSum = 0;
     public static int startIndex = 0;
@@ -39,9 +39,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         xWinsText = findViewById(R.id.totalDefault);
         oWinsText.setText(0 + "");
         xWinsText.setText(0 + "");
-        grid = new int[9];
-        turnNum = 0;
-        isXTurn = true;
+        reset();
 
         Button buttonTL = findViewById(R.id.btn0); //TopLeft
         Button buttonTC = findViewById(R.id.btn1); //TopCenter
@@ -59,32 +57,27 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v)
     {
-        int index = -1; // Default to -1 if not found
-        for (int i = 0; i < BUTTONS.size(); i++) {
-            if (BUTTONS.get(i).getId() == v.getId()) {
-                index = i;
-                break;
-            }
-        }
-        if(grid[index] == 0) { //set the "grid" to -1 (for O's) or 1 (for X's)
+        int index = BUTTONS.indexOf(v);
+        if(index != -1 && grid[index] == 0) { //set the "grid" to -1 (for O's) or 1 (for X's)
             grid[index] = isXTurn? 1: -1;
-            BUTTONS.get(index).setText(isXTurn ? "X": "O");
+            ((Button)v).setText(isXTurn ? "X": "O");
             isXTurn ^= true;
             playerText.setText("Player "+(isXTurn? "X's": "O's"));
             turnNum++;
-            if(turnNum >= 4) {
-                if(winCheck(checkDiagonalSum(index), checkColumnSum(index), checkRowSum(index))) resetButtons();
-            }
+            if(turnNum >= 4 && winCheck(checkDiagonalSum(index), checkColumnSum(index), checkRowSum(index)))
+                resetButtons();
         }
         else { //toast message indicating you cannot place there
             CharSequence text = "Spot's Taken";
-            Toast.makeText(PlayActivity.this, text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         }
     }
     private boolean winCheck(int sum1, int sum2, int sum3)
     {
-        int win = Math.abs(sum1) == 3? sum1:(Math.abs(sum2) == 3 ? sum2:(Math.abs(sum3) == 3? sum3: -1));
-        if(Math.abs(win) == 3) {
+        int win = Math.abs(sum1) == 3? sum1:
+                Math.abs(sum2) == 3 ? sum2:
+                Math.abs(sum3) == 3? sum3: -1;
+        if(win != -1) {
             CharSequence text = "";
             if(win < 0) {
                 text+= "O's Wins!";
@@ -94,26 +87,27 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
                 text+= "X's Wins!";
                 xWinsText.setText((Integer.parseInt(xWinsText.getText().toString())+1)+"");
             }
-            Toast.makeText(PlayActivity.this, text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
             return true;
         }
         else if(turnNum >= 9) {
-            Toast.makeText(PlayActivity.this, "Tie Game", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Tie Game", Toast.LENGTH_LONG).show();
             resetButtons();
             return true;
         }
         else return false;
     }
-    private void resetButtons()
+    private void resetButtons() //prepares for next game
     {
         grid = new int[9];
-        if(isXTurn) playerText.setText("Player O's START");
-        else playerText.setText("Player X's START");
+        if(isXTurn)
+            playerText.setText("Player O's START");
+        else
+            playerText.setText("Player X's START");
         isXTurn ^= true;
         turnNum = 0;
-        for (Button btn : BUTTONS) {
+        for (Button btn : BUTTONS)
             btn.setText("~");
-        }
     }
     public void openHome(View v)
     {
@@ -121,7 +115,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         finish();
         startActivity(intent);
     } //starts the home page activity
-    private int checkDiagonalSum(int gid) //grid index
+    public static int checkDiagonalSum(int gid) //grid index
     {
         winSum = 0;
         if(gid%2 ==0) {
@@ -133,9 +127,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(gid == 4) { //check the second case for center
             int temp = 0;
-            for(int i = 2; i < 7; i+=2)
-                temp+=grid[i];
-            if(Math.abs(winSum)!=3) winSum = temp;
+            for(int i = 2; i < 7; i+=2) temp+=grid[i];
+            if(Math.abs(winSum)!=3)
+                winSum = temp;
         }
         return winSum;
     }
@@ -147,12 +141,18 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             winSum += grid[i];
         return winSum;
     }
-    private int checkRowSum(int gid) //grid index
+    public static int checkRowSum(int gid) //grid index
     {
         winSum = 0;
         startIndex = gid<3? 0: gid<6?3:6;
         for(int i = startIndex; i <= startIndex+2; i++)
             winSum += grid[i];
         return winSum;
+    }
+    public static void reset()
+    {
+        grid = new int[9];
+        turnNum = 0;
+        isXTurn = true;
     }
 }

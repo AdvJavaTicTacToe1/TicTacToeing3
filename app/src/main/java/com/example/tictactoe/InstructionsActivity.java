@@ -11,9 +11,7 @@ public class InstructionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructions);
-//        Button toHomeButton = findViewById(R.id.toHome);
     }
-
     public void openHome(View v)
     {
         Intent intent = new Intent(this, MainActivity.class);
