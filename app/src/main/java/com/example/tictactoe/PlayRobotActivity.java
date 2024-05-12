@@ -2,6 +2,7 @@ package com.example.tictactoe;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+        PlayActivity.resetGrid();
         gameMode = findViewById(R.id.gameModeText);
         gameMode.setText(R.string.singlePlayer);
         botLetter = findViewById(R.id.botPlayer);
@@ -60,6 +62,9 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     {
         CharSequence text = "Button Clicked";
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        PlayActivity.checkColumnSum(0);
+        String test = PlayActivity.grid[0] + "";
+        Log.d("Testing", test);
     }
     public void openHome(View v)
     {

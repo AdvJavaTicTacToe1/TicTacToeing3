@@ -157,4 +157,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             winSum += grid[i];
         return winSum;
     }
+    public static void resetGrid()
+    {
+        grid = new int[9];
+    }
 }
