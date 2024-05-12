@@ -77,7 +77,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         int win = Math.abs(sum1) == 3? sum1:
                 Math.abs(sum2) == 3 ? sum2:
                 Math.abs(sum3) == 3? sum3: -1;
-        if(Math.abs(win) == 3) {
+        if(win != -1) {
             CharSequence text = "";
             if(win < 0) {
                 text+= "O's Wins!";
@@ -97,7 +97,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         }
         else return false;
     }
-    private void resetButtons()
+    private void resetButtons() //prepares for next game
     {
         grid = new int[9];
         if(isXTurn)
@@ -115,7 +115,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         finish();
         startActivity(intent);
     } //starts the home page activity
-    private static int checkDiagonalSum(int gid) //grid index
+    public static int checkDiagonalSum(int gid) //grid index
     {
         winSum = 0;
         if(gid%2 ==0) {
@@ -141,7 +141,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             winSum += grid[i];
         return winSum;
     }
-    private static int checkRowSum(int gid) //grid index
+    public static int checkRowSum(int gid) //grid index
     {
         winSum = 0;
         startIndex = gid<3? 0: gid<6?3:6;
