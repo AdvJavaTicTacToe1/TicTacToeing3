@@ -82,13 +82,6 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     }
     private boolean winCheck(int a, int b, int c) //a, b, and c are the possible winning sums
     { //return boolean if game is finished it's true
-
-        //NOTE: change turn indicators when game finishes,
-        // should keep letters but swap player and bot turn precedence
-
-        //(on wincheck) if they tie the game should flip letter starts
-        //            if someone wins they take next first
-
         int win = Math.abs(a) == 3? a:
                 Math.abs(b) == 3 ? b:
                 Math.abs(c) == 3? c: -1;
@@ -117,67 +110,37 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
         PlayActivity.turnNum = 0;
         for (Button btn : BUTTONS)
             btn.setText("~");
+        if(!PlayActivity.isXTurn) botStart();
     }
     private void botTurn(int index)
     {
         PlayActivity.turnNum++;
         int botIndex = -1;
-        if(isHardDiff)
+        if (isHardDiff && PlayActivity.turnNum > 2)
         {
-            if(PlayActivity.turnNum > 2) {
-                if(PlayActivity.checkDiagonalSum(index) == 2) {
-                    if(index == 4) {
-                        int nonBlank = 0;
-                        //check corners
-                        while (PlayActivity.grid[nonBlank] == 0) nonBlank+= nonBlank == 2 ? 4: 2;
-                        botIndex= 8 -nonBlank;
-                    }
-                    else if(PlayActivity.grid[4] == 0)
-                    {
-                        botIndex = 4;
-                    }
-                    else {
-                        int endD = (index % 4 == 0) ? 9 : 7;
-                        int addD = (endD == 9) ? 4 : 2;
-                        for (int i = index % 4; i < endD; endD += addD) {
-                            if (PlayActivity.grid[i] == 0) {
-                                botIndex = i;
-                                break;
-                            }
-                        }
-                    }
-                    //this leaves a hole in the hard diff bot,
-                    //only if you take the center and play a diagonal
-                } //end of partical digaonal case
-                else if(PlayActivity.checkRowSum(index) == 2) {
-                    int startR = index<3? 0: index<6?3:6;
-                    for(int j = startR; j< startR+3; j++) {
-                        if (PlayActivity.grid[j] == 0) {
-                            botIndex = j;
-                            break;
-                        }
-                    }
-                }
-                else if(PlayActivity.checkColumnSum(index) == 2) {
-                    int startC = index%3;
-                    for(int k = startC; k< startC+7; k+=3) {
-                        if (PlayActivity.grid[k] == 0) {
-                            botIndex = k;
-                            break;
-                        }
-                    }
-                }
-            } //end of turn num if
+//            conditionals will only work for 3x3
+//            hard coded because it's more efficent than looping
+            if(PlayActivity.checkDiagonalSum(index) == 2) {
+//                boolean isCenter = PlayActivity.grid[4] != 0;
+                if(PlayActivity.grid[4] == 0)
+                    botIndex = 4;
+                else botIndex = Math.abs(8-index); //8 is last index
+            }
+            else if (PlayActivity.checkRowSum(index) == 2) {
+                int edge = index<3? 0: index<6?3:6;
+//                int edge = (index / 3) * 3; can also be written like this
+                if (PlayActivity.grid[edge] == 0) botIndex = edge;
+                else botIndex = (PlayActivity.grid[edge+1] == 0) ? edge+1: edge+2;
+            } //rather than use loops I made it hard coded since loop variables are not necessary
+            else if (PlayActivity.checkColumnSum(index) == 2) {
+                int roof = index%3;
+                if (PlayActivity.grid[roof] == 0) botIndex = roof;
+                else botIndex = (PlayActivity.grid[roof+3] == 0) ? roof+3: roof+6;
+            }
         } //end of hard diff
         if(botIndex == -1) botIndex = nextRandom();
-        //NOTE: make sure the botIndex you set is not one that already exists,
-        // otherwise you will override existing tile
-
         PlayActivity.grid[botIndex] = PlayActivity.isXTurn ? -1: 1;
         BUTTONS.get(botIndex).setText(PlayActivity.isXTurn? "O": "X");
-
-//        uncomment these lines after adding both difficulties
-//        adds the winCheck after botTurn
         if(PlayActivity.turnNum >= 4 && winCheck(PlayActivity.checkDiagonalSum(botIndex),
                 PlayActivity.checkColumnSum(botIndex), PlayActivity.checkRowSum(botIndex))) {
             nextGame();
@@ -185,7 +148,7 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
     }
     private void botStart()
     {
-        int addIndex = (Math.random()*9 <= 4)? (int)(Math.random() * 8): 4;
+        int addIndex = (Math.random()*9 <= 2)? (int)(Math.random() * 8): 4;
         PlayActivity.grid[addIndex] = PlayActivity.isXTurn? -1: 1;
         BUTTONS.get(addIndex).setText(PlayActivity.isXTurn? "O": "X");
         PlayActivity.turnNum++;
@@ -205,9 +168,7 @@ public class PlayRobotActivity extends AppCompatActivity implements View.OnClick
                 botLetter.setText("Bot X's START");
                 botStart();
             }
-            else {
-                botLetter.setText("Bot O's");
-            }
+            else botLetter.setText("Bot O's");
         }
         else {
             Toast.makeText(this, "Finish Current Game First.", Toast.LENGTH_SHORT).show();
